@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+	Vue.component('component1', {
+		template : '<div>' 
+				 + '<h3>첫 번째 h3태그 입니다</h3>' 
+				 + '<h3>두 번째 h3태그 입니다</h3>'
+				 + '</div>'
+	})
+	
+	Vue.component('component2', {
+		template : '<h3>세 번째 h3태그 입니다</h3>' 
+	})
+	
+	Vue.component('data_component', {
+		template : '<div>'
+				 + '<h3>데이터를 사용하는 템플릿</h3>' 
+				 + '</div>',
+		data : {
+			a1 : '문자열1'
+		}
+	})
+
+	window.onload = function(){
+		var test1 = new Vue({
+			el : '#test1'
+		})
+		
+		var test2 = new Vue({
+			el : '#test2'
+		})
+		
+		var test3 = new Vue({
+			el : '#test3',
+			components : {
+				'component3' : {
+					template : '<h3>네 번째 h3태그 입니다</h3>'
+				},
+				'component4' : {
+					template : '<h3>다섯 번째 h3태그 입니다</h3>'
+				}
+			}
+		})
+		
+		var test4 = new Vue({
+			el : '#test4'
+		})
+	}
+</script>
+</head>
+<body>
+	<div id="test1">
+		<component1></component1>
+	</div>
+	<hr/>
+	<div id="test2">
+		<component1></component1>
+		<component2></component2>
+		<!-- <component3></component3> -->
+	</div>
+	<hr/>
+	<div id="test3">
+		<component1></component1>
+		<component2></component2>
+		<component3></component3>
+		<component4></component4>
+	</div>
+	<hr/>
+	<div id="test4">
+		<data_component></data_component>
+	</div>
+</body>
+</html>
